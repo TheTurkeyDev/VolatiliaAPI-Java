@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+ext.buildnumber = 0
+if (System.getenv('BUILD_NUMBER') != null)
+    project.buildnumber = System.getenv('BUILD_NUMBER')
+else
+    logger.lifecycle "No build number detected, setting to 0"
+
+
+version= "${proj_version}.${buildnumber}"
+group= "com.theprogrammingturkey.volatiliajava"
+archivesBaseName= "VolatiliaAPI-Java"
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+build.dependsOn sourceJar
+
+publishing {
+    tasks.publish.dependsOn 'build'
+    publications {
+        mavenJava(MavenPublication) {
+        	artifactId 'VolatiliaAPI-Java'
+            from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+
+    repositories {
+        if (project.hasProperty('mavendir')) {
+            maven { url mavendir }
+        }
+        else{
+        	logger.error('Failed to find maven directory')
+        }
+    }
+}
