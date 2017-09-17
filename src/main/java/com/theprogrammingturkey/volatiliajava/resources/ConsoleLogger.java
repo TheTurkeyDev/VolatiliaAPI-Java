@@ -1,11 +1,11 @@
 package com.theprogrammingturkey.volatiliajava.resources;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConsoleLogger
 {
-	private static List<IConsoleOutput> outputRecievers = Arrays.asList(new BaseConsoleOutput());
+	private static List<IConsoleOutput> outputRecievers = new ArrayList<IConsoleOutput>();
 
 	public static void log(Level level, String message)
 	{
@@ -16,6 +16,11 @@ public class ConsoleLogger
 	public static void addOutputReciever(IConsoleOutput reciever)
 	{
 		outputRecievers.add(reciever);
+	}
+
+	public static void enableDefaultlogger()
+	{
+		outputRecievers.add(new BaseConsoleOutput());
 	}
 
 	public enum Level
