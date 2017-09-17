@@ -1,14 +1,5 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'maven-publish'
-
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+apply plugin: "java"
+apply plugin: "maven-publish"
 
 ext.buildnumber = 0
 if (System.getenv('BUILD_NUMBER') != null)
@@ -16,26 +7,15 @@ if (System.getenv('BUILD_NUMBER') != null)
 else
     logger.lifecycle "No build number detected, setting to 0"
 
-
 version= "${proj_version}.${buildnumber}"
 group= "com.theprogrammingturkey.volatiliaApi"
 archivesBaseName= "VolatiliaAPI-Java"
 
-task sourceJar (type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allJava
-}
-
 publishing {
-    tasks.publish.dependsOn 'build'
-    publications {
+       publications {
         mavenJava(MavenPublication) {
         	artifactId 'VolatiliaAPI-Java'
             from components.java
-
-            artifact sourceJar {
-                classifier "sources"
-            }
         }
     }
 
