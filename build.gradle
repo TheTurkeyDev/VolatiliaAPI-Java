@@ -18,7 +18,7 @@ else
 
 
 version= "${proj_version}.${buildnumber}"
-group= "com.theprogrammingturkey.volatiliajava"
+group= "com.theprogrammingturkey.volatiliaApi"
 archivesBaseName= "VolatiliaAPI-Java"
 
 task sourceJar(type: Jar) {

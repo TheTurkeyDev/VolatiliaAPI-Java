@@ -43,7 +43,7 @@ public class HTTPUtil
 		int responseCode = con.getResponseCode();
 
 		if(responseCode != HttpURLConnection.HTTP_OK && responseCode != HttpURLConnection.HTTP_MOVED_PERM)
-			ConsoleLogger.log(Level.WARN, "Update request returned response code: " + responseCode + " " + con.getResponseMessage());
+			ConsoleLogger.log(Level.WARNING, "Update request returned response code: " + responseCode + " " + con.getResponseMessage());
 		else if(responseCode == HttpURLConnection.HTTP_MOVED_PERM)
 			throw new Exception();
 
