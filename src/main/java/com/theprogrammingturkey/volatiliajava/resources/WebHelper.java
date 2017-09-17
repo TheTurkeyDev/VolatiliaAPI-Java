@@ -8,7 +8,7 @@ import java.util.Map;
 
 import com.theprogrammingturkey.volatiliajava.resources.ConsoleLogger.Level;
 
-public class HTTPUtil
+public class WebHelper
 {
 	public static String makeRequest(String link, RequestType type, Map<String, String> header, Map<String, String> extras) throws Exception
 	{
