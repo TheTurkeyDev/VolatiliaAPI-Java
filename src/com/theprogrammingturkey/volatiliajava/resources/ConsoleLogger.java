@@ -35,7 +35,7 @@ public class ConsoleLogger
 		}
 	}
 
-	public interface IConsoleOutput
+	public static interface IConsoleOutput
 	{
 		public void output(Level level, String message);
 	}
