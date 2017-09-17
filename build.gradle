@@ -21,11 +21,10 @@ version= "${proj_version}.${buildnumber}"
 group= "com.theprogrammingturkey.volatiliaApi"
 archivesBaseName= "VolatiliaAPI-Java"
 
-task sourceJar(type: Jar) {
+task sourceJar (type: Jar) {
+    classifier = 'sources'
     from sourceSets.main.allJava
 }
-
-build.dependsOn sourceJar
 
 publishing {
     tasks.publish.dependsOn 'build'
