@@ -45,7 +45,7 @@ public class FileHelper
 		return builder.toString();
 	}
 
-	public void writeToFile(File file, String output)
+	public static void writeToFile(File file, String output)
 	{
 		try
 		{
