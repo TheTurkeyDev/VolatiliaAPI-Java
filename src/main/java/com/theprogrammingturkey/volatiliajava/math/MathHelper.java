@@ -1,6 +1,6 @@
 package com.theprogrammingturkey.volatiliajava.math;
 
-public class VMath
+public class MathHelper
 {
 	public static int clamp(int lower, int upper, int number)
 	{
