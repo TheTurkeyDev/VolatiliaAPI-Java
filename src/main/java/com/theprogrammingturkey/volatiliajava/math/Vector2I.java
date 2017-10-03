@@ -1,9 +1,17 @@
 package com.theprogrammingturkey.volatiliajava.math;
 
+import com.theprogrammingturkey.volatiliajava.util.Direction;
+
 public class Vector2I implements IVector
 {
 	private int x;
 	private int y;
+
+	public Vector2I()
+	{
+		this.x = 0;
+		this.y = 0;
+	}
 
 	public Vector2I(int x, int y)
 	{
@@ -33,6 +41,24 @@ public class Vector2I implements IVector
 	public Vector2I subVector(IVector vec)
 	{
 		return new Vector2I(x - vec.getX().intValue(), y - vec.getY().intValue());
+	}
+
+	@Override
+	public Vector2I shiftInDirection(Direction dir, Number amount)
+	{
+		switch(dir)
+		{
+			case DOWN:
+				return this.sub(0, amount);
+			case LEFT:
+				return this.sub(amount, 0);
+			case RIGHT:
+				return this.add(amount, 0);
+			case UP:
+				return this.add(0, amount);
+			default:
+				return this.add(0, 0);
+		}
 	}
 
 	@Override
