@@ -17,11 +17,20 @@ public class WebHelper
 		con.setDoInput(true);
 		con.setReadTimeout(5000);
 		con.setRequestProperty("Connection", "keep-alive");
-		con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0) Gecko/20100101 Firefox/16.0");
 
+		boolean userAgentSet = false;
 		if(header != null)
+		{
 			for(String headProp : header.keySet())
+			{
+				if(headProp.equalsIgnoreCase("User-Agent"))
+					userAgentSet = true;
 				con.setRequestProperty(headProp, header.get(headProp));
+			}
+		}
+
+		if(!userAgentSet)
+			con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0) Gecko/20100101 Firefox/16.0");
 
 		((HttpURLConnection) con).setRequestMethod(type.name());
 		con.setConnectTimeout(5000);
