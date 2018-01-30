@@ -74,6 +74,6 @@ public class WebHelper
 
 	public enum RequestType
 	{
-		GET, POST, PUT, DELETE, UPDATE;
+		GET, POST, PUT, DELETE, UPDATE, PATCH;
 	}
 }
