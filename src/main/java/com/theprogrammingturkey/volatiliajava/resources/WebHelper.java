@@ -10,6 +10,20 @@ import com.theprogrammingturkey.volatiliajava.resources.ConsoleLogger.Level;
 
 public class WebHelper
 {
+	/**
+	 * Makes a HTTP request to the given url and returns the response as a string
+	 * 
+	 * @param link
+	 *            to make the request to
+	 * @param type
+	 *            Request type to make (GET, POST, etc...)
+	 * @param header
+	 *            Header parameters
+	 * @param extras
+	 *            Out Parameters to be sent with the http request
+	 * @return String of the response
+	 * @throws Exception
+	 */
 	public static String makeRequest(String link, RequestType type, Map<String, String> header, Map<String, String> extras) throws Exception
 	{
 		HttpURLConnection con = (HttpURLConnection) new URL(link).openConnection();
