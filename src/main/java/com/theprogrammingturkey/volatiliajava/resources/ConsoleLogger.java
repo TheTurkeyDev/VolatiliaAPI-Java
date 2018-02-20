@@ -25,7 +25,7 @@ public class ConsoleLogger
 
 	public enum Level
 	{
-		NONE(""), INFO("Info"), IMPORTANT("IMPORTANT"), ALERT("Alert"), WARNING("Warning"), DEBUG("DeBug"), ERROR("ERROR");
+		NONE(""), INFO("Info"), IMPORTANT("IMPORTANT"), ALERT("Alert"), WARNING("Warning"), DEBUG("Debug"), ERROR("ERROR");
 
 		private String display;
 
