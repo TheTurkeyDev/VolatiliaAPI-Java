@@ -78,4 +78,10 @@ public class Vector2I implements IVector
 	{
 		return y;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "(" + this.x + ", " + this.y + ")";
+	}
 }

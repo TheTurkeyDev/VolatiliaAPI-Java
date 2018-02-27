@@ -79,4 +79,9 @@ public class Vector2F implements IVector
 		return y;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "(" + this.x + ", " + this.y + ")";
+	}
 }

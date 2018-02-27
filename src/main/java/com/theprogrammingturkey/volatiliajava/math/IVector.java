@@ -81,4 +81,11 @@ public interface IVector
 	 * @return the y component
 	 */
 	public Number getY();
+
+	/**
+	 * 
+	 * @return the String representation of the Vector
+	 */
+	@Override
+	public String toString();
 }

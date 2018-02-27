@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.theprogrammingturkey.volatiliajava.math.Vector2I;
+import com.theprogrammingturkey.volatiliajava.util.Direction;
 
 public class MazeGenerator
 {
@@ -57,38 +58,18 @@ public class MazeGenerator
 		currentX = 1;
 		currentY = 1;
 		Vector2I current = new Vector2I(currentX, currentY);
-		Vector2I north = current.add(0, -1);
-		Vector2I east = current.add(1, 0);
-		Vector2I south = current.add(0, 1);
-		Vector2I west = current.add(-1, 0);
 
-		if((north.getY() > 0) && (map[(int) north.getX()][(int) north.getY()] == wall))
+		for(Direction dir : Direction.values())
 		{
-			if(multiple)
-				walls.add(north);
-			else if((map[(int) north.getX()][(int) (north.getY() - 1)] == wall))
-				walls.add(north);
-		}
-		if((east.getX() < xSize) && (map[(int) east.getX()][(int) east.getY()] == wall))
-		{
-			if(multiple)
-				walls.add(east);
-			else if((map[(int) (east.getX() + 1)][(int) east.getY()] == wall))
-				walls.add(east);
-		}
-		if((south.getY() < ySize) && (map[(int) south.getX()][(int) south.getY()] == wall))
-		{
-			if(multiple)
-				walls.add(south);
-			else if((map[(int) south.getX()][(int) (south.getY() + 1)] == wall))
-				walls.add(south);
-		}
-		if((west.getX() > 0) && (map[(int) west.getX()][(int) west.getY()] == wall))
-		{
-			if(multiple)
-				walls.add(west);
-			else if((map[(int) (west.getX() - 1)][(int) west.getY()] == wall))
-				walls.add(west);
+			Vector2I dirVec = current.shiftInDirection(dir, 1);
+			Vector2I dirVec2 = dirVec.shiftInDirection(dir, 1);
+			if(isLocInMaze(dirVec) && (map[dirVec.getX()][dirVec.getY()] == wall))
+			{
+				if(multiple)
+					walls.add(dirVec);
+				else if((map[dirVec2.getX()][dirVec2.getY()] == wall))
+					walls.add(dirVec);
+			}
 		}
 
 		while(walls.size() > 0)
@@ -97,43 +78,22 @@ public class MazeGenerator
 			currentX = (int) (walls.get(randomLoc)).getX();
 			currentY = (int) (walls.get(randomLoc)).getY();
 			current = new Vector2I(currentX, currentY);
-			north = current.add(0, -1);
-			east = current.add(1, 0);
-			south = current.add(0, 1);
-			west = current.add(-1, 0);
 
 			if(!checkwalls(current))
 			{
 				map[currentX][currentY] = nonWall;
 				walls.remove(randomLoc);
-
-				if((north.getY() - 1 > 0) && (map[(int) north.getX()][(int) north.getY()] == wall))
+				for(Direction dir : Direction.values())
 				{
-					if(multiple)
-						walls.add(north);
-					else if((map[(int) north.getX()][(int) (north.getY() - 1)] == wall))
-						walls.add(north);
-				}
-				if((east.getX() + 1 < xSize) && (map[(int) east.getX()][(int) east.getY()] == wall))
-				{
-					if(multiple)
-						walls.add(east);
-					else if((map[(int) (east.getX() + 1)][(int) east.getY()] == wall))
-						walls.add(east);
-				}
-				if((south.getY() + 1 < ySize) && (map[(int) south.getX()][(int) south.getY()] == wall))
-				{
-					if(multiple)
-						walls.add(south);
-					else if((map[(int) south.getX()][(int) (south.getY() + 1)] == wall))
-						walls.add(south);
-				}
-				if((west.getX() - 1 > 0) && (map[(int) west.getX()][(int) west.getY()] == wall))
-				{
-					if(multiple)
-						walls.add(west);
-					else if((map[(int) (west.getX() - 1)][(int) west.getY()] == wall))
-						walls.add(west);
+					Vector2I dirVec = current.shiftInDirection(dir, 1);
+					Vector2I dirVec2 = dirVec.shiftInDirection(dir, 1);
+					if(isLocInMaze(dirVec2) && (map[dirVec.getX()][dirVec.getY()] == wall))
+					{
+						if(multiple)
+							walls.add(dirVec);
+						else if((map[dirVec2.getX()][dirVec2.getY()] == wall))
+							walls.add(dirVec);
+					}
 				}
 			}
 			else
@@ -141,9 +101,6 @@ public class MazeGenerator
 				walls.remove(randomLoc);
 			}
 		}
-		/*
-		 * map[18][13] = nonWall; boolean Inaccessible = true; int i = 1; while (Inaccessible) { map[(18 - i)][13] = nonWall; map[18][(13 - i)] = nonWall; i++; if ((map[(18 - i)][13] == nonWall) || (map[18][(13 - i)] == nonWall) || (map[(18 - i)][12] == nonWall) || (map[17][(13 - i)] == nonWall)) { Inaccessible = false; } }
-		 */
 		if(multiple)
 		{
 			for(int y = 1; y < ySize - 1; y++)
@@ -288,6 +245,24 @@ public class MazeGenerator
 			}
 		}
 		return new Vector2I(x, y);
+	}
+
+	/**
+	 * Returns whether or not the given location is in the bounds of the maze.
+	 * 
+	 * Bounds of the maze do not include boarder.
+	 * 
+	 * True if 0<x<width and 0<y<height
+	 * 
+	 * False otherwise
+	 * 
+	 * @param loc
+	 *            location to test
+	 * @return if the location is in the bounds of the maze
+	 */
+	public boolean isLocInMaze(Vector2I loc)
+	{
+		return loc.getX() > 0 && loc.getX() < xSize && loc.getY() > 0 && loc.getY() < ySize;
 	}
 
 	/**
