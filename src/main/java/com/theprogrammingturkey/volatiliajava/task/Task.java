@@ -8,6 +8,8 @@ public abstract class Task
 
 	public int updateTick;
 
+	public boolean alive = true;
+
 	/**
 	 * Creates a task that runs for a given amount of time then calls its callback function.
 	 * 
@@ -75,5 +77,31 @@ public abstract class Task
 	public void update()
 	{
 
+	}
+
+	/**
+	 * Kills the current task and gets removed automatically from the scheduler next cycle.
+	 */
+	public void kill()
+	{
+		this.alive = false;
+	}
+
+	/**
+	 * 
+	 * @return if the task is alive
+	 */
+	public boolean isAlive()
+	{
+		return this.alive;
+	}
+
+	/**
+	 * 
+	 * @return the name of the task
+	 */
+	public String getName()
+	{
+		return this.name;
 	}
 }
