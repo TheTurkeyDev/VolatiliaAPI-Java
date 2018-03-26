@@ -22,7 +22,7 @@ public class MathHelper
 			return upper;
 		return number;
 	}
-	
+
 	/**
 	 * Clamps the passed number to be within the passed bounds
 	 * 
@@ -63,6 +63,69 @@ public class MathHelper
 		if(number > upper)
 			return upper;
 		return number;
+	}
+
+	/**
+	 * Maps an integer value from one range, to a new range.
+	 * 
+	 * @param currentValue
+	 *            value to map to the new range of.
+	 * @param oldLow
+	 *            lower bound of the range that the value is currently mapped to
+	 * @param oldUpper
+	 *            upper bound of the range that the value is currently mapped to
+	 * @param newLow
+	 *            lower bound of the range that the value should be mapped to
+	 * @param newUpper
+	 *            upper bound of the range that the value should be mapped to
+	 * @return new value that is mapped to be in the new range from the passed in value given the
+	 *         old range
+	 */
+	public static int map(int currentValue, int oldLow, int oldUpper, int newLow, int newUpper)
+	{
+		return (currentValue - oldLow) / (oldUpper - oldLow) * (newUpper - newLow) + newLow;
+	}
+
+	/**
+	 * Maps an integer value from one range, to a new range.
+	 * 
+	 * @param currentValue
+	 *            value to map to the new range of.
+	 * @param oldLow
+	 *            lower bound of the range that the value is currently mapped to
+	 * @param oldUpper
+	 *            upper bound of the range that the value is currently mapped to
+	 * @param newLow
+	 *            lower bound of the range that the value should be mapped to
+	 * @param newUpper
+	 *            upper bound of the range that the value should be mapped to
+	 * @return new value that is mapped to be in the new range from the passed in value given the
+	 *         old range
+	 */
+	public static double map(double currentValue, double oldLow, double oldUpper, double newLow, double newUpper)
+	{
+		return (currentValue - oldLow) / (oldUpper - oldLow) * (newUpper - newLow) + newLow;
+	}
+
+	/**
+	 * Maps an integer value from one range, to a new range.
+	 * 
+	 * @param currentValue
+	 *            value to map to the new range of.
+	 * @param oldLow
+	 *            lower bound of the range that the value is currently mapped to
+	 * @param oldUpper
+	 *            upper bound of the range that the value is currently mapped to
+	 * @param newLow
+	 *            lower bound of the range that the value should be mapped to
+	 * @param newUpper
+	 *            upper bound of the range that the value should be mapped to
+	 * @return new value that is mapped to be in the new range from the passed in value given the
+	 *         old range
+	 */
+	public static float map(float currentValue, float oldLow, float oldUpper, float newLow, float newUpper)
+	{
+		return (currentValue - oldLow) / (oldUpper - oldLow) * (newUpper - newLow) + newLow;
 	}
 
 	/**
