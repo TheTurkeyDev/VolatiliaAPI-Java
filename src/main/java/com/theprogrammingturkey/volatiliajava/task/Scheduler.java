@@ -80,7 +80,6 @@ public class Scheduler
 						task.update();
 					}
 				}
-				System.out.println(task.getName() + " has terminated");
 			}
 		});
 		thread.start();
@@ -106,8 +105,6 @@ public class Scheduler
 	 */
 	public static void tickSyncTasks()
 	{
-		System.out.println("Sync: " + syncTasks.size());
-		System.out.println("Async: " + asyncTasks.size());
 		for(int i = syncTasks.size() - 1; i >= 0; i--)
 		{
 			Task task = syncTasks.get(i);
