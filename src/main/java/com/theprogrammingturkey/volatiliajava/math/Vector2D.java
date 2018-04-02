@@ -83,4 +83,10 @@ public class Vector2D implements IVector
 	{
 		return "(" + this.x + ", " + this.y + ")";
 	}
+
+	@Override
+	public boolean equals(IVector vector)
+	{
+		return this.getX().equals(vector.getX()) && this.getY().equals(vector.getY());
+	}
 }

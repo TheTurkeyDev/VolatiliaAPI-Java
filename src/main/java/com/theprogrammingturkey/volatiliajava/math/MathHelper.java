@@ -64,7 +64,7 @@ public class MathHelper
 			return upper;
 		return number;
 	}
-	
+
 	/**
 	 * Clamps the passed number to be within the passed bounds
 	 * 
@@ -148,7 +148,7 @@ public class MathHelper
 	{
 		return (currentValue - oldLow) / (oldUpper - oldLow) * (newUpper - newLow) + newLow;
 	}
-	
+
 	/**
 	 * Maps an long value from one range, to a new range.
 	 * 
@@ -168,6 +168,28 @@ public class MathHelper
 	public static float map(long currentValue, long oldLow, long oldUpper, long newLow, long newUpper)
 	{
 		return (currentValue - oldLow) / (oldUpper - oldLow) * (newUpper - newLow) + newLow;
+	}
+
+	/**
+	 * Tests if a point is within a region. Boundary is inclusive.
+	 * 
+	 * @param x
+	 *            coord of the point to test
+	 * @param y
+	 *            coord of the point to test
+	 * @param lx
+	 *            lower x coord of the region
+	 * @param ly
+	 *            lower y coord of the region
+	 * @param ux
+	 *            upper x coord of the region
+	 * @param uy
+	 *            upper y coord of the region
+	 * @return if the point is in the region
+	 */
+	public static boolean inBounds(int x, int y, int lx, int ly, int ux, int uy)
+	{
+		return x >= lx && x <= ux && y >= ly && y <= uy;
 	}
 
 	/**

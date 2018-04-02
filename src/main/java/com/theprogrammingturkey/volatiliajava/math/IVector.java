@@ -88,4 +88,13 @@ public interface IVector
 	 */
 	@Override
 	public String toString();
+	
+	/**
+	 * Tests if this vector is equal to the passed vector. Can be any type of IVector, but the
+	 * vector coords will not be converted to this vectors data type and compared.
+	 * 
+	 * @param vector to compare
+	 * @return If the vectors are equal in both coords.
+	 */
+	public boolean equals(IVector vector);
 }
