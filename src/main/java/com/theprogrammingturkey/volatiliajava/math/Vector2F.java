@@ -26,9 +26,23 @@ public class Vector2F implements IVector
 	}
 
 	@Override
+	public void addU(Number x, Number y)
+	{
+		this.x += x.floatValue();
+		this.y += y.floatValue();
+	}
+
+	@Override
 	public Vector2F sub(Number x, Number y)
 	{
 		return new Vector2F(this.x - x.floatValue(), this.y - y.floatValue());
+	}
+
+	@Override
+	public void subU(Number x, Number y)
+	{
+		this.x -= x.floatValue();
+		this.y -= y.floatValue();
 	}
 
 	@Override
@@ -38,9 +52,24 @@ public class Vector2F implements IVector
 	}
 
 	@Override
+	public void addVectorU(IVector vec)
+	{
+		this.x += vec.getX().floatValue();
+		this.y += vec.getY().floatValue();
+	}
+
+	@Override
 	public Vector2F subVector(IVector vec)
 	{
 		return new Vector2F(this.x - vec.getX().floatValue(), this.y - vec.getY().floatValue());
+	}
+
+	@Override
+	public void subVectorU(IVector vec)
+	{
+		this.x -= vec.getX().floatValue();
+		this.y -= vec.getY().floatValue();
+
 	}
 
 	@Override
@@ -58,6 +87,24 @@ public class Vector2F implements IVector
 				return this.add(0, amount);
 			default:
 				return this.add(0, 0);
+		}
+	}
+
+	@Override
+	public void shiftInDirectionU(Direction dir, Number amount)
+	{
+		switch(dir)
+		{
+			case DOWN:
+				this.subU(0, amount);
+			case LEFT:
+				this.subU(amount, 0);
+			case RIGHT:
+				this.addU(amount, 0);
+			case UP:
+				this.addU(0, amount);
+			default:
+				this.addU(0, 0);
 		}
 	}
 
@@ -84,7 +131,7 @@ public class Vector2F implements IVector
 	{
 		return "(" + this.x + ", " + this.y + ")";
 	}
-	
+
 	@Override
 	public boolean equals(IVector vector)
 	{

@@ -26,9 +26,23 @@ public class Vector2I implements IVector
 	}
 
 	@Override
+	public void addU(Number x, Number y)
+	{
+		this.x += x.intValue();
+		this.y += y.intValue();
+	}
+
+	@Override
 	public Vector2I sub(Number x, Number y)
 	{
 		return new Vector2I(this.x - x.intValue(), this.y - y.intValue());
+	}
+
+	@Override
+	public void subU(Number x, Number y)
+	{
+		this.x -= x.intValue();
+		this.y -= y.intValue();
 	}
 
 	@Override
@@ -38,9 +52,23 @@ public class Vector2I implements IVector
 	}
 
 	@Override
+	public void addVectorU(IVector vec)
+	{
+		x += vec.getX().intValue();
+		y += vec.getY().intValue();
+	}
+
+	@Override
 	public Vector2I subVector(IVector vec)
 	{
 		return new Vector2I(x - vec.getX().intValue(), y - vec.getY().intValue());
+	}
+
+	@Override
+	public void subVectorU(IVector vec)
+	{
+		x -= vec.getX().intValue();
+		y -= vec.getY().intValue();
 	}
 
 	@Override
@@ -58,6 +86,24 @@ public class Vector2I implements IVector
 				return this.add(0, amount);
 			default:
 				return this.add(0, 0);
+		}
+	}
+
+	@Override
+	public void shiftInDirectionU(Direction dir, Number amount)
+	{
+		switch(dir)
+		{
+			case DOWN:
+				this.subU(0, amount);
+			case LEFT:
+				this.subU(amount, 0);
+			case RIGHT:
+				this.addU(amount, 0);
+			case UP:
+				this.addU(0, amount);
+			default:
+				this.addU(0, 0);
 		}
 	}
 
@@ -84,7 +130,7 @@ public class Vector2I implements IVector
 	{
 		return "(" + this.x + ", " + this.y + ")";
 	}
-	
+
 	@Override
 	public boolean equals(IVector vector)
 	{
