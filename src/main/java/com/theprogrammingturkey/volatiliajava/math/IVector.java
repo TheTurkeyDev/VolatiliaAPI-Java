@@ -131,6 +131,21 @@ public interface IVector
 	public Number getY();
 
 	/**
+	 * Sets the x component of this vector.
+	 */
+	public void setX(Number x);
+
+	/**
+	 * Sets the y component of this vector
+	 */
+	public void setY(Number y);
+
+	/**
+	 * Sets the x and y components of this vector.
+	 */
+	public void setXY(Number x, Number Y);
+
+	/**
 	 * 
 	 * @return the String representation of the Vector
 	 */

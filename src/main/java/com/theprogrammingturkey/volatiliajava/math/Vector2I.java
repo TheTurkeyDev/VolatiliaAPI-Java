@@ -126,6 +126,25 @@ public class Vector2I implements IVector
 	}
 
 	@Override
+	public void setX(Number x)
+	{
+		this.x = x.intValue();
+	}
+
+	@Override
+	public void setY(Number y)
+	{
+		this.y = y.intValue();
+	}
+
+	@Override
+	public void setXY(Number x, Number y)
+	{
+		this.x = x.intValue();
+		this.y = y.intValue();
+	}
+
+	@Override
 	public String toString()
 	{
 		return "(" + this.x + ", " + this.y + ")";

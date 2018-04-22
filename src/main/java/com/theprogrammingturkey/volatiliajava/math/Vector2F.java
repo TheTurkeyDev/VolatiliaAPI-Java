@@ -127,6 +127,25 @@ public class Vector2F implements IVector
 	}
 
 	@Override
+	public void setX(Number x)
+	{
+		this.x = x.floatValue();
+	}
+
+	@Override
+	public void setY(Number y)
+	{
+		this.y = y.floatValue();
+	}
+
+	@Override
+	public void setXY(Number x, Number y)
+	{
+		this.x = x.floatValue();
+		this.y = y.floatValue();
+	}
+
+	@Override
 	public String toString()
 	{
 		return "(" + this.x + ", " + this.y + ")";

@@ -125,6 +125,25 @@ public class Vector2D implements IVector
 	}
 
 	@Override
+	public void setX(Number x)
+	{
+		this.x = x.doubleValue();
+	}
+
+	@Override
+	public void setY(Number y)
+	{
+		this.y = y.doubleValue();
+	}
+
+	@Override
+	public void setXY(Number x, Number y)
+	{
+		this.x = x.doubleValue();
+		this.y = y.doubleValue();
+	}
+
+	@Override
 	public String toString()
 	{
 		return "(" + this.x + ", " + this.y + ")";
