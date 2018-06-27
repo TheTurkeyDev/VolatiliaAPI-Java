@@ -27,6 +27,7 @@ public class WebHelper
 	public static String makeRequest(String link, RequestType type, Map<String, String> header, Map<String, String> extras) throws Exception
 	{
 		HttpURLConnection con = (HttpURLConnection) new URL(link).openConnection();
+		con.setUseCaches(false);
 		con.setDoOutput(true);
 		con.setDoInput(true);
 		con.setReadTimeout(5000);
