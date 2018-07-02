@@ -11,6 +11,19 @@ version= "${proj_version}.${buildnumber}"
 group= "com.theprogrammingturkey.volatiliaApi"
 archivesBaseName= "VolatiliaAPI-Java"
 
+repositories {
+	mavenCentral()
+	
+    maven { // The repo from which to get GobbleCore
+        name "GobbleCore Repo"
+        url "http://maven.theprogrammingturkey.com/"
+    }
+}
+
+dependencies {
+	compile "com.theprogrammingturkey.volatiliaApi:VolatiliaAPI-WebAccess:0.1.2"
+}
+
 publishing {
        publications {
         mavenJava(MavenPublication) {
