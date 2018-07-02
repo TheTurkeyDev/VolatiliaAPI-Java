@@ -14,8 +14,8 @@ archivesBaseName= "VolatiliaAPI-Java"
 repositories {
 	mavenCentral()
 	
-    maven { // The repo from which to get GobbleCore
-        name "GobbleCore Repo"
+    maven {
+        name "My Repo"
         url "http://maven.theprogrammingturkey.com/"
     }
 }
