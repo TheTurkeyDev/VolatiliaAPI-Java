@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-	compile "com.theprogrammingturkey.volatiliaApi:VolatiliaAPI-WebAccess:0.1.2"
+	compile "com.theprogrammingturkey.volatiliaApi:VolatiliaAPI-WebAccess:0.1.4"
 }
 
 publishing {
