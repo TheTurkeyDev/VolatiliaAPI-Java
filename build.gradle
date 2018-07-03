@@ -11,19 +11,6 @@ version= "${proj_version}.${buildnumber}"
 group= "com.theprogrammingturkey.volatiliaApi"
 archivesBaseName= "VolatiliaAPI-Java"
 
-repositories {
-	mavenCentral()
-	
-    maven {
-        name "My Repo"
-        url "http://maven.theprogrammingturkey.com/"
-    }
-}
-
-dependencies {
-	compile "com.theprogrammingturkey.volatiliaApi:VolatiliaAPI-WebAccess:0.1.4"
-}
-
 publishing {
        publications {
         mavenJava(MavenPublication) {
